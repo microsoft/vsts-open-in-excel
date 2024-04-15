@@ -7,7 +7,7 @@
         "vso.work",
         "vso.work_write"
     ],
-    "description": "This extension opens work items and query results in Excel from Visual Studio Team Services",
+    "description": "This extension opens work items and query results in Excel from Azure DevOps",
     "publisher": "blueprint",
     "icons": {
         "default": "img/excellogo.png"

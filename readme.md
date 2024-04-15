@@ -1,10 +1,9 @@
 # Open in Excel
 
-> **This extension requires Microsoft Excel and one of the following clients to be installed:**
-> - [Visual Studio 2017](https://www.visualstudio.com/downloads/#visual-studio-enterprise-2017) or later        
-> - [Team Foundation Server Office® Integration 2017](https://www.visualstudio.com/downloads/#team-foundation-server-office-integration-2017) or later
+> This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client.
+> Click [here](https://aka.ms/devopsexcel) to learn more.
 
-An extension for Team Services that enables opening query results in Excel from the web. 
+An extension for Azure DevOps that enables opening query results in Excel from the web. 
 
 ### Example
 ![Open in Excel scenarios](img/openinexcel.gif?raw=true)
@@ -12,4 +11,3 @@ An extension for Team Services that enables opening query results in Excel from 
 ### Supported Scenarios
 * Open Work Item Query in Excel (from Query explorer or Query results toolbar)
 * Open selected Work Item(s) in Excel
-
