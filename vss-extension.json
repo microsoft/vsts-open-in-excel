@@ -34,10 +34,10 @@
             "uri": "https://aka.ms/open-in-excel"
         },
         "learn": {
-            "uri": "https://aka.ms/open-in-excel"
+            "uri": "https://aka.ms/devopsexcel"
         },
         "support": {
-            "uri": "https://github.com/snuziale/vsts-open-in-excel"
+            "uri": "https://github.com/microsoft/vsts-open-in-excel"
         }
     },
     "branding": {

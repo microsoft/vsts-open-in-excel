@@ -1,13 +1,14 @@
-# Open in Excel
+Use this extension for bulk editing work items, or to leverage Excel tools to analyze and visualize a large number of work items. Work items that are opened in Excel can be edited and published back to Azure DevOps with a single click. Once you are ready to publish your changes, simply hit "Publish" from Excel to sync your changes back to Azure DevOps. 
 
-> This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client.
+> **Note:** This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client.
 > Click [here](https://aka.ms/devopsexcel) to learn more.
 
-An extension for Azure DevOps that enables opening query results in Excel from the web. 
+# Documentation 
 
-### Example
-![Open in Excel scenarios](img/openinexcel.gif?raw=true)
+The extension is documented [here](details.md#documentation).
 
-### Supported Scenarios
-* Open Work Item Query in Excel (from Query explorer or Query results toolbar)
-* Open selected Work Item(s) in Excel
+# Support
+
+See [support](details.md#support) for information about how to report issues and get help.
+
+# Contributing
