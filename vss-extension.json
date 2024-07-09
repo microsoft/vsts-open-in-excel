@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
     "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.66",
-    "name": "VSTS Open in Excel",
+    "version": "0.1.71",
+    "name": "Azure DevOps Open in Excel",
     "scopes": [
         "vso.work",
         "vso.work_write"
@@ -37,7 +37,7 @@
             "uri": "https://aka.ms/devopsexcel"
         },
         "support": {
-            "uri": "https://github.com/microsoft/vsts-open-in-excel"
+            "uri": "https://github.com/microsoft/vsts-open-in-excel/issues"
         }
     },
     "branding": {
