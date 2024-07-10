@@ -12,3 +12,7 @@ The extension is documented [here](details.md#documentation).
 See [support](details.md#support) for information about how to report issues and get help.
 
 # Contributing
+
+  We welcome contributions to the extension. If you would like to contribute, please fork the repository and create a pull request with your changes. Your contributions help enhance the functionality and usability of the extension for the entire community.
+
+  Check out https://learn.microsoft.com/en-us/azure/devops/extend/get-started to learn how to develop Azure DevOps extensions.
