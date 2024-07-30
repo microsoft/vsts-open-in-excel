@@ -24,6 +24,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "postinstall": "typings install"
+    "preinstall": "npm i grunt -g && npm i tfx-cli -g",
+    "build:release": "grunt build --force"
   }
 }

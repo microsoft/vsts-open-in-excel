@@ -1,5 +1,6 @@
 {
-    "id": "vsts-open-work-items-in-excel",
-    "name": "Open Work Items in Excel",
-    "public": false
+    "public": false,
+    "id": "vsts-open-work-items-in-excel-dev",
+    "name": "Azure DevOps Open in Excel (dev)",
+    "baseUri": "https://localhost:9090"
 }
