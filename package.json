@@ -15,7 +15,6 @@
     "karma-requirejs": "^1.1.0",
     "mocha": "^3.2.0",
     "requirejs": "^2.3.2",
-    "rimraf": "^6.0.1",
     "tfx-cli": "^0.3.43",
     "typescript": "^2.0.10",
     "typings": "^2.0.0",
@@ -24,9 +23,5 @@
   "name": "vsts-open-in-excel",
   "private": true,
   "version": "0.1.0",
-  "scripts": {
-    "preinstall": "npm i grunt -g && npm i tfx-cli -g",
-    "clean:vsix": "rimraf **/*.vsix",
-    "build:release": "npm run clean:vsix && grunt build --force"
-  }
+  "scripts": {}
 }
