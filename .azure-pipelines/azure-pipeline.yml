@@ -2,7 +2,7 @@ variables:
 - name: major
   value: '0'
 - name: minor
-  value: '1'
+  value: '2'
 - name: extensionName
   value: 'vsts-open-work-items-in-excel'
 - name: marketplaceServiceConnection
@@ -42,45 +42,42 @@ stages:
         extensionName: $(extensionName)
         outputPath: 'out'
 
-# - stage: 'DeployDev'
-#   displayName: 'Deploy to dev'
-#   dependsOn: Build
-#   condition: succeeded()
-#   jobs: 
-#   - template: deploy.yml@pipeline-templates
-#     parameters:
-#       environment: 'dev'
-#       extensionName: $(extensionName)
-#       marketplaceConnectedServiceName: $(marketplaceServiceConnection)
-#       publisherId: $(publisherId)
-#       publicExtensionName: $(publicExtensionName)
-#       updateTaskVersion: true
+- stage: 'DeployDev'
+  displayName: 'Deploy to dev'
+  dependsOn: Build
+  condition: succeeded()
+  jobs: 
+  - template: deploy.yml@pipeline-templates
+    parameters:
+      environment: 'dev'
+      extensionName: $(extensionName)
+      marketplaceConnectedServiceName: $(marketplaceServiceConnection)
+      publisherId: $(publisherId)
+      publicExtensionName: $(publicExtensionName)
 
-# - stage: 'DeployTest'
-#   displayName: 'Deploy to Test'
-#   dependsOn: DeployDev
-#   condition: succeeded()
-#   jobs:
-#   - template: deploy.yml@pipeline-templates
-#     parameters:
-#       environment: 'test'
-#       extensionName: $(extensionName)
-#       marketplaceConnectedServiceName: $(marketplaceServiceConnection)
-#       publisherId: $(publisherId)
-#       publicExtensionName: $(publicExtensionName)
-#       updateTaskVersion: true
+- stage: 'DeployTest'
+  displayName: 'Deploy to Test'
+  dependsOn: DeployDev
+  condition: succeeded()
+  jobs:
+  - template: deploy.yml@pipeline-templates
+    parameters:
+      environment: 'test'
+      extensionName: $(extensionName)
+      marketplaceConnectedServiceName: $(marketplaceServiceConnection)
+      publisherId: $(publisherId)
+      publicExtensionName: $(publicExtensionName)
 
-# - stage: 'DeployRelease'
-#   displayName: 'Deploy Release'
-#   dependsOn: DeployTest
-#   condition: succeeded()
-#   jobs:
-#   - template: deploy.yml@pipeline-templates
-#     parameters:
-#       environment: 'public'
-#       extensionName: $(extensionName)
-#       marketplaceConnectedServiceName: $(marketplaceServiceConnection)
-#       publisherId: $(publisherId)
-#       publicExtensionName: $(publicExtensionName)
-#       extensionVisibility: 'public'
-#       updateTaskVersion: true
+- stage: 'DeployRelease'
+  displayName: 'Deploy Release'
+  dependsOn: DeployTest
+  condition: succeeded()
+  jobs:
+  - template: deploy.yml@pipeline-templates
+    parameters:
+      environment: 'public'
+      extensionName: $(extensionName)
+      marketplaceConnectedServiceName: $(marketplaceServiceConnection)
+      publisherId: $(publisherId)
+      publicExtensionName: $(publicExtensionName)
+      extensionVisibility: 'public'
