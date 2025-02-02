@@ -81,20 +81,6 @@
             }
         },
         {
-            "id": "openWorkItemsAction",
-            "type": "ms.vss-web.action",
-            "description": "Open in Excel context menu on a work item.",
-            "targets": [
-                "ms.vss-work-web.work-item-context-menu"
-            ],
-            "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
-                "group": "actions",
-                "uri": "index.html"
-            }
-        },
-        {
             "id": "openQueryOnToolbarAction",
             "type": "ms.vss-web.action",
             "description": "Open in Excel toolbar menu item on the query results.",
