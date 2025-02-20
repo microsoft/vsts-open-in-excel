@@ -1,0 +1,44 @@
+{
+    "name": "vsts-open-in-excel",
+    "private": true,
+    "version": "0.1.0",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "webpack --mode development",
+      "build:dev": "webpack-dev-server --mode development"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+      "@types/react": "^16.14.0",
+      "@types/react-dom": "^16.9.0",
+      "azure-devops-extension-api": "^4.246.0",
+      "azure-devops-extension-sdk": "^4.0.2",
+      "azure-devops-ui": "^2.251.0",
+      "react": "^16.14.0",
+      "react-dom": "^16.14.0"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.26.7",
+      "@babel/preset-env": "^7.26.7",
+      "@babel/preset-react": "^7.26.3",
+      "@babel/preset-typescript": "^7.26.0",
+      "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+      "@types/react-dom": "^16.9.0",
+      "babel-loader": "^9.2.1",
+      "copy-webpack-plugin": "^11.0.0",
+      "css-loader": "^7.1.2",
+      "react": "^16.14.0",
+      "react-dom": "^16.14.0",
+      "react-refresh": "^0.16.0",
+      "style-loader": "^4.0.0",
+      "ts-loader": "^9.5.2",
+      "typescript": "^5.7.3",
+      "webpack": "^5.97.1",
+      "webpack-cli": "^6.0.1",
+      "webpack-dev-server": "^5.2.0"
+    }
+  }
