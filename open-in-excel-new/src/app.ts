@@ -68,7 +68,8 @@ export var openQueryAction = {
             const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
             const project = await projectService.getProject();
             if(project) {
-                const collectionUri = "https://dev.azure.com/" + SDK.getHost().name + "/";
+                const locationService = await SDK.getService<ILocationService>(CommonServiceIds.LocationService);
+                const collectionUri = await locationService.getServiceLocation();
                 const url = generateUrl(SupportedActions.OpenQuery, collectionUri, encodeURI(project.name), qid);
                 openUrl(url);
             }

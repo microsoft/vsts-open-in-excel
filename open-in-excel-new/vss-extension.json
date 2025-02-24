@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.84",
+    "version": "0.1.85",
     "name": "Azure DevOps Open in Excel",
     "scopes": [
         "vso.work",
