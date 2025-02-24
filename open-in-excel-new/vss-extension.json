@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.81",
+    "version": "0.1.84",
     "name": "Azure DevOps Open in Excel",
     "scopes": [
         "vso.work",
@@ -71,7 +71,7 @@
                 "ms.vss-work-web.work-item-query-results-toolbar-menu"
             ],
             "properties": {
-                "text": "Open in Excel DEV",
+                "text": "Open in Excel",
                 "icon": "img/miniexcellogo.png",
                 "group": "actions",
                 "uri": "dist/index.html",
@@ -91,30 +91,6 @@
                 "group": "actions",
                 "uri": "dist/index.html",
                 "registeredObjectId": "openQueryAction"
-            }
-        },
-        {
-            "id": "openWorkItemsAction",
-            "type": "ms.vss-web.action",
-            "description": "Open in Excel context menu on a work item.",
-            "targets": [
-                "ms.vss-work-web.work-item-context-menu"
-            ],
-            "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
-                "group": "actions",
-                "uri": "dist/index.html",
-                "registeredObjectId": "openWorkItemsAction"
-            }
-        },
-        {
-            "id": "notificationDialog",
-            "type": "ms.vss-web.external-content",
-            "targets": [],
-            "properties": {
-                "uri": "dialog.html",
-                "registeredObjectId": "notificationDialog"
             }
         }
     ]

@@ -1,8 +1,7 @@
-import { CommonServiceIds, IHostPageLayoutService, IProjectPageService } from "azure-devops-extension-api";
+import { CommonServiceIds, IProjectPageService, IGlobalMessagesService, ILocationService } from "azure-devops-extension-api";
 import * as SDK from "azure-devops-extension-sdk";
 
 namespace SupportedActions {
-    export const OpenItems = "OpenItems";
     export const OpenQuery = "OpenQuery";
 }
 
@@ -32,25 +31,10 @@ export function isSupportedQueryId(queryId: string) {
 export function generateUrl(action: string, collection: string, project: string, qid?: string | undefined, wids?: number[] | undefined, columns?: string[] | undefined): string {
     let url = `tfs://ExcelRequirements/${action}?cn=${collection}&proj=${project}`;
 
-    if (action === SupportedActions.OpenItems) {
-        if (!wids) {
-            throw new Error(`'wids' must be provided for '${SupportedActions.OpenItems}' action.`);
-        }
-        url += `&wid=${wids}`;
-
-        if (columns && columns.length > 0) {
-            url += `&columns=${columns}`;
-        }
+    if (!qid) {
+        throw new Error(`'qid' must be provided for '${SupportedActions.OpenQuery}' action.`);
     }
-    else if (action === SupportedActions.OpenQuery) {
-        if (!qid) {
-            throw new Error(`'qid' must be provided for '${SupportedActions.OpenQuery}' action.`);
-        }
-        url += `&qid=${qid}`;
-    }
-    else {
-        throw new Error(`Unsupported action provided: ${action}`);
-    }
+    url += `&qid=${qid}`;
 
     if (url.length > 2000) {
         throw new Error('Generated url is exceeds the maxlength, please reduce the number of work items you selected.');
@@ -80,7 +64,6 @@ export interface IActionContext {
 export var openQueryAction = {
     execute: async (actionContext: IActionContext) => {
         if (actionContext && actionContext.query && actionContext.query.id) {
-            console.log(actionContext);
             const qid = actionContext.query.id;
             const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
             const project = await projectService.getProject();
@@ -99,27 +82,6 @@ export var openQueryAction = {
     }
 };
 
-export var openWorkItemsAction = {
-    execute: async (actionContext: IActionContext) => {
-        const wids = actionContext.ids ||
-            actionContext.workItemIds ||
-            (actionContext.workItemId && actionContext.workItemId > 0 ? [actionContext.workItemId] : undefined) ||
-            (actionContext.id && actionContext.id > 0 ? [actionContext.id] : undefined);
-        const columns = actionContext.columns;
-        const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
-        const project = await projectService.getProject();
-        console.log(actionContext);
-        if(project) {
-            const collectionUri = "https://dev.azure.com/" + SDK.getHost().name + "/";
-            const url = generateUrl(SupportedActions.OpenItems, collectionUri, encodeURI(project.name), undefined, wids, columns);
-            openUrl(url);
-        }
-        else{
-            alert("Unable to perform operation.");
-        }
-    }
-};
-
 export var openQueryOnToolbarAction = {
     execute: async (actionContext: IActionContext) => {
             if (actionContext && actionContext.query && actionContext.query.wiql && isSupportedQueryId(actionContext.query.id)) {
@@ -127,7 +89,8 @@ export var openQueryOnToolbarAction = {
                 const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
                 const project = await projectService.getProject();
                 if(project) {
-                    const collectionUri = "https://dev.azure.com/" + SDK.getHost().name + "/";
+                    const locationService = await SDK.getService<ILocationService>(CommonServiceIds.LocationService);
+                    const collectionUri = await locationService.getServiceLocation();
                     const url = generateUrl(SupportedActions.OpenQuery, collectionUri, encodeURI(project.name), qid);
                     openUrl(url);
                 }
@@ -141,26 +104,27 @@ export var openQueryOnToolbarAction = {
     }
 };
 
-// export var showNotificationDialog = {
-//     execute: async () => {
-//         showCustomDialog();
-//     }
-// };
+export var showNotificationDialog = {
+    execute: async () => {
+        showCustomDialog();
+    }
+};
 
-// const showCustomDialog = async () => {
-//     const dialogService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
-//       dialogService.openCustomDialog<boolean | undefined>(SDK.getExtensionContext().id + ".notificationDialog", {
-//         title: "Buttons",
-//         lightDismiss: true,
-//         configuration: {
-//         },
-//         onClose: () => {
-//         },
-//       });
-// };
+
+const showCustomDialog = async () => {
+    const messageService = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
+        messageService.addDialog({
+            title: "Open in Excel",
+            messageLinks: [
+                { href: "https://aka.ms/open-in-excel", name: "Azure DevOps Open in Excel" },
+                { href: "https://aka.ms/devopsexcel", name: "here" }
+            ],
+            messageFormat: "Thanks for using {0}. This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client. Click {1} to learn more.",
+    });
+};
 
 function openUrl(url: string) {
-    // showNotificationDialog.execute();
+    showNotificationDialog.execute();
     SDK.getService(CommonServiceIds.HostNavigationService).then((navigationService: any) => {
         navigationService.navigate(url);
     });

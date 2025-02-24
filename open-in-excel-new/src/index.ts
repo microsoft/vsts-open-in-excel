@@ -19,20 +19,5 @@ SDK.register("openQueryAction", () => {
     }
 });
 
-SDK.register("openWorkItemsAction", () => {
-    return {
-        execute: async (context: any) => {
-            App.openWorkItemsAction.execute(context);
-        }
-    }
-});
-
-// SDK.register("notificationDialog", () => {
-//     return {
-//         execute: async () => {
-//             App.showNotificationDialog.execute();
-//         }
-//     }
-// });
 
 SDK.init();

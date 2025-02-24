@@ -29,7 +29,7 @@ module.exports = {
   },
   entry: {
     index: './src/index.ts',
-    dialog: './src/dialog.tsx',
+
   },
   output: {
     publicPath: "/dist/",
