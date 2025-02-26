@@ -50,50 +50,19 @@
             "addressable": true
         },
         {
-            "path": "build",
+            "path": "dist",
             "addressable": true
         },
         {
-            "path": "index.html",
-            "addressable": true
-        },
-        {
-            "path": "dialog.html",
-            "addressable": true
+            "path": "node_modules/azure-devops-extension-sdk",
+            "addressable": true,
+            "packagePath": "lib"
         }
     ],
     "categories": [
         "Azure Boards"
     ],
     "contributions": [
-        {
-            "id": "openQueryAction",
-            "type": "ms.vss-web.action",
-            "description": "Open in Excel context menu on a query definition.",
-            "targets": [
-                "ms.vss-work-web.work-item-query-menu"
-            ],
-            "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
-                "group": "actions",
-                "uri": "index.html"
-            }
-        },
-        {
-            "id": "openWorkItemsAction",
-            "type": "ms.vss-web.action",
-            "description": "Open in Excel context menu on a work item.",
-            "targets": [
-                "ms.vss-work-web.work-item-context-menu"
-            ],
-            "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
-                "group": "actions",
-                "uri": "index.html"
-            }
-        },
         {
             "id": "openQueryOnToolbarAction",
             "type": "ms.vss-web.action",
@@ -105,15 +74,23 @@
                 "text": "Open in Excel",
                 "icon": "img/miniexcellogo.png",
                 "group": "actions",
-                "uri": "index.html"
+                "uri": "dist/index.html",
+                "registeredObjectId": "openQueryOnToolbarAction"
             }
         },
         {
-            "id": "notificationDialog",
-            "type": "ms.vss-web.control",
-            "targets": [],
+            "id": "openQueryAction",
+            "type": "ms.vss-web.action",
+            "description": "Open in Excel context menu on a query definition.",
+            "targets": [
+                "ms.vss-work-web.work-item-query-menu"
+            ],
             "properties": {
-                "uri": "dialog.html"
+                "text": "Open in Excel",
+                "icon": "img/miniexcellogo.png",
+                "group": "actions",
+                "uri": "dist/index.html",
+                "registeredObjectId": "openQueryAction"
             }
         }
     ]

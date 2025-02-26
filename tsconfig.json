@@ -1,21 +1,15 @@
 {
     "compilerOptions": {
-        "module": "amd",
-        "sourceMap": false,
-        "target": "es5"
+      "target": "es5",
+      "module": "commonjs",
+      "strict": true,
+      "jsx": "react",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "./dist"
     },
-    "filesGlob": [
-        "./scripts/**/*.ts",
-        "!**/*.tests.ts",
-        "./typings/index.d.ts"
-    ],
-    "files": [
-        "scripts/app.ts",
-        "scripts/dialog.ts",
-        "scripts/index.ts",
-        "typings/index.d.ts"
-    ],
-    "exclude": [
-        "./node_modules"
+    "include": [
+      "src/**/*"
     ]
-}
+  }
