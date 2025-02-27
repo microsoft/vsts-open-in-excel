@@ -111,7 +111,6 @@ export var showNotificationDialog = {
     }
 };
 
-
 const showCustomDialog = async () => {
     const messageService = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
         messageService.addDialog({
@@ -122,6 +121,10 @@ const showCustomDialog = async () => {
             ],
             messageFormat: "Thanks for using {0}. This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client. Click {1} to learn more.",
     });
+
+    setTimeout(() => {
+        messageService.closeDialog();
+    }, 8000);
 };
 
 function openUrl(url: string) {
@@ -130,4 +133,3 @@ function openUrl(url: string) {
         navigationService.navigate(url);
     });
 }
-
