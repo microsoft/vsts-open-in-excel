@@ -6,7 +6,6 @@ SDK.register("openQueryOnToolbarAction", () => {
     return {
         execute: async (context: any) => {
             App.openQueryOnToolbarAction.execute(context);
-            console.log(context);
         }
     }
 });

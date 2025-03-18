@@ -1,4 +1,4 @@
-import { CommonServiceIds, IProjectPageService, IGlobalMessagesService, ILocationService } from "azure-devops-extension-api";
+import { CommonServiceIds, IProjectPageService, IGlobalMessagesService, ILocationService, IGlobalDialog, IHostPageLayoutService } from "azure-devops-extension-api";
 import * as SDK from "azure-devops-extension-sdk";
 
 namespace SupportedActions {
@@ -112,19 +112,32 @@ export var showNotificationDialog = {
 };
 
 const showCustomDialog = async () => {
-    const messageService = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
-        messageService.addDialog({
-            title: "Open in Excel",
-            messageLinks: [
-                { href: "https://aka.ms/open-in-excel", name: "Azure DevOps Open in Excel" },
-                { href: "https://aka.ms/devopsexcel", name: "here" }
-            ],
-            messageFormat: "Thanks for using {0}. This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client. Click {1} to learn more.",
-    });
+    try {
+        const messageService = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
+            messageService.addDialog({
+                title: "Open in Excel",
+                messageLinks: [
+                    { href: "https://aka.ms/open-in-excel", name: "Azure DevOps Open in Excel" },
+                    { href: "https://aka.ms/devopsexcel", name: "here" }
+                ],
+                messageFormat: "Thanks for using {0}. This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client. Click {1} to learn more.",
+        });
 
-    setTimeout(() => {
-        messageService.closeDialog();
-    }, 8000);
+        setTimeout(() => {
+            messageService.closeDialog();
+        }, 10000);
+    } catch (error) {
+        console.error("SDK version not available in this version of ADO.", error);
+
+        try {
+            const dialogService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
+            dialogService.openMessageDialog("Thanks for using this extension.\
+                 This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client.",
+                 { title: "Open in Excel", okText: "Close", showCancel: false });
+        } catch (error) {
+            console.error("Unable to perform operation. ADO version not supported.", error);
+        }
+    }
 };
 
 function openUrl(url: string) {
