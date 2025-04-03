@@ -23,7 +23,7 @@ module.exports = {
     open: false,
     hot: true,
     static: {
-      directory: path.join(__dirname, "./"), // Serve files from the 'dist' directory
+      directory: path.join(__dirname, "./"), 
     },
   },
   entry: {
@@ -32,7 +32,7 @@ module.exports = {
   },
   output: {
     publicPath: "/dist/",
-    filename: '[name].js', // Ensure this matches the script tag in your HTML
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
