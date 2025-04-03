@@ -1,4 +1,3 @@
-// filepath: /c:/Users/MattiasBälter/my-first-extension/webpack.config.js
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require('path');
 const isDevelopment = process.env.NODE_ENV !== 'production';
