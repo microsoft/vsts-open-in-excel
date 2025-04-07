@@ -118,22 +118,22 @@ const showCustomDialog = async () => {
         return;
     }
 
-    // try {
-    //     const messageService = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
-    //         messageService.addDialog({
-    //             title: "Open in Excel",
-    //             messageLinks: [
-    //                 { href: "https://aka.ms/open-in-excel", name: "Azure DevOps Open in Excel" },
-    //                 { href: "https://aka.ms/devopsexcel", name: "here" }
-    //             ],
-    //             messageFormat: "Thanks for using {0}. This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client. Click {1} to learn more.",
-    //     });
+    try {
+        const messageService = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
+            messageService.addDialog({
+                title: "Open in Excel",
+                messageLinks: [
+                    { href: "https://aka.ms/open-in-excel", name: "Azure DevOps Open in Excel" },
+                    { href: "https://aka.ms/devopsexcel", name: "here" }
+                ],
+                messageFormat: "Thanks for using {0}. This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client. Click {1} to learn more.",
+        });
 
-    //     setTimeout(() => {
-    //         messageService.closeDialog();
-    //     }, 10000);
-    // } catch (error) {
-    //     console.error("SDK version not available in this version of ADO.", error);
+        setTimeout(() => {
+            messageService.closeDialog();
+        }, 10000);
+    } catch (error) {
+        console.error("SDK version not available in this version of ADO.", error);
 
         try {
             const dialogService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
@@ -145,7 +145,7 @@ const showCustomDialog = async () => {
         } catch (error) {
             console.error("Unable to perform operation. ADO version not supported.", error);
         }
-    // }
+    }
 };
 
 function openUrl(url: string) {
