@@ -27,12 +27,12 @@
     "content": {
         "details": {
             "path": "details.md"
+        },
+        "license": {
+             "path": "LICENSE"
         }
     },
     "links": {
-        "getstarted": {
-            "uri": "https://aka.ms/open-in-excel"
-        },
         "learn": {
             "uri": "https://aka.ms/devopsexcel"
         },
