@@ -3,4 +3,3 @@ scripts/*.js
 typings
 dist
 build
-*.vsix

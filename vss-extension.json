@@ -1,20 +1,21 @@
 {
     "manifestVersion": 1,
-    "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.66",
-    "name": "VSTS Open in Excel",
+    "id": "vsts-open-work-items-in-excel-2019",
+    "version": "0.1.72",
+    "name": "Azure DevOps Open in Excel 2019",
     "scopes": [
         "vso.work",
         "vso.work_write"
     ],
-    "description": "This extension opens work items and query results in Excel from Visual Studio Team Services",
+    "description": "This extension opens work items and query results in Excel from Azure DevOps Server/Visual Studio Team Services 2019 and earlier.",
     "publisher": "blueprint",
     "icons": {
         "default": "img/excellogo.png"
     },
     "targets": [
         {
-            "id": "Microsoft.VisualStudio.Services"
+            "id": "Microsoft.TeamFoundation.Server",
+            "version": "[10.0, 17.0]"
         }
     ],
     "tags": [
@@ -27,17 +28,14 @@
     "content": {
         "details": {
             "path": "details.md"
+        },
+        "license": {
+            "path": "LICENSE"
         }
     },
     "links": {
-        "getstarted": {
-            "uri": "https://aka.ms/open-in-excel"
-        },
-        "learn": {
-            "uri": "https://aka.ms/open-in-excel"
-        },
         "support": {
-            "uri": "https://github.com/snuziale/vsts-open-in-excel"
+            "uri": "https://github.com/microsoft/vsts-open-in-excel/issues"
         }
     },
     "branding": {
@@ -63,7 +61,7 @@
         }
     ],
     "categories": [
-        "Plan and track"
+        "Azure Boards"
     ],
     "contributions": [
         {
