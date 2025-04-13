@@ -3,6 +3,8 @@ Use this extension for bulk editing work items, or to leverage Excel tools to an
 > **Note:** This extension requires Microsoft Excel, and an installed version of Visual Studio or the free Azure DevOps Office Integration client.
 > Click [here](https://aka.ms/devopsexcel) to learn more.
 
+If you are using an older version of Azure DevOps Server/Team Foundation Server (2019 or earlier), the compatible extension is published as [Azure DevOps Open in Excel 2019](https://marketplace.visualstudio.com/items?itemName=blueprint.vsts-open-work-items-in-excel-2019). 
+
 # Documentation 
 
 Supported scenarios:
