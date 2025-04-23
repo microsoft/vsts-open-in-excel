@@ -19,6 +19,11 @@ You can also click the "Open in Excel" button available on the toolbar for a que
 
 ![Open query in Excel](img/open-from-query.png)
 
+## Select multiple work items and open them in Excel
+Sometimes you may want to select a specific set of work items from a query, not the entire query. To do this, select the work items you want (hold Shift to select multiple consecutive work items or Ctrl to select multiple work items) and use the Right-click on selected work items to "Open in Excel."
+
+![Open work items in Excel](img/open-from-workitem.png)
+
 # Support
 
 ## How to file issues and get help
