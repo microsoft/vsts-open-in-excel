@@ -9,6 +9,7 @@ If you are using an older version of Azure DevOps Server/Team Foundation Server 
 
 Supported scenarios:
 * Open Work Item Query in Excel (from Query explorer or Query results toolbar)
+* Open Single or Multiple Work Items in Excel (from Query results, backlog or Work Item form)
 
 ## Open an entire query in Excel for editing, data analysis and more
 To access an entire query, navigate to Work > Queries, select the query you would like to open and use the right-click option in the context menu to "Open in Excel". 
@@ -18,6 +19,11 @@ To access an entire query, navigate to Work > Queries, select the query you woul
 You can also click the "Open in Excel" button available on the toolbar for a query as well.  
 
 ![Open query in Excel](img/open-from-query.png)
+
+## Select multiple work items and open them in Excel
+Sometimes you may want to select a specific set of work items from a query, not the entire query. To do this, select the work items you want (hold Shift to select multiple consecutive work items or Ctrl to select multiple work items) and use the Right-click on selected work items to "Open in Excel."
+
+![Open work items in Excel](img/open-from-workitem.png)
 
 # Support
 

@@ -3,6 +3,7 @@ import * as SDK from "azure-devops-extension-sdk";
 
 namespace SupportedActions {
     export const OpenQuery = "OpenQuery";
+    export const OpenItems = "OpenItems";
 }
 
 namespace WellKnownQueries {
@@ -28,13 +29,29 @@ export function isSupportedQueryId(queryId: string) {
     return queryId && queryExclusionList.indexOf(queryId.toUpperCase()) === -1;
 }
 
-export function generateUrl(action: string, collection: string, project: string, qid?: string | undefined, wids?: number[] | undefined, columns?: string[] | undefined): string {
+export function generateUrl(action: string, collection: string, project: string, qid?: string, wids?: number[], columns?: string[]): string {
     let url = `tfs://ExcelRequirements/${action}?cn=${collection}&proj=${project}`;
 
-    if (!qid) {
-        throw new Error(`'qid' must be provided for '${SupportedActions.OpenQuery}' action.`);
+    if (action === SupportedActions.OpenItems) {
+        if (!wids) {
+            throw new Error(`'wids' must be provided for '${SupportedActions.OpenItems}' action.`);
+        }
+        url += `&wid=${wids}`;
+
+        if (columns && columns.length > 0) {
+            url += `&columns=${columns}`;
+        }
+        console.log(url);
     }
-    url += `&qid=${qid}`;
+    else if (action === SupportedActions.OpenQuery) {
+        if (!qid) {
+            throw new Error(`'qid' must be provided for '${SupportedActions.OpenQuery}' action.`);
+        }
+        url += `&qid=${qid}`;
+    }
+    else {
+        throw new Error(`Unsupported action provided: ${action}`);
+    }
 
     if (url.length > 2000) {
         throw new Error('Generated url is exceeds the maxlength, please reduce the number of work items you selected.');
@@ -74,7 +91,7 @@ export var openQueryAction = {
                 openUrl(url);
             }
             else{
-                alert("Unable to perform operation. Not a valid team context.");
+                alert("Unable to perform operation. Not a valid project context.");
             }
         }
         else {
@@ -96,12 +113,33 @@ export var openQueryOnToolbarAction = {
                     openUrl(url);
                 }
                 else{
-                    alert("Unable to perform operation. Not a valid team context.");
+                    alert("Unable to perform operation. Not a valid project context.");
                 }
             }
             else {
                 alert("Unable to perform operation. To use this extension, queries must be saved in My Queries or Shared Queries.");
             }
+    }
+};
+
+export var openWorkItemsAction = {
+    execute: async (actionContext: IActionContext) => {
+        const wids = actionContext.ids ||
+            actionContext.workItemIds ||
+            (actionContext && actionContext.workItemId && actionContext.workItemId > 0 ? [actionContext.workItemId] : undefined) ||
+            (actionContext.id && actionContext.id > 0 ? [actionContext.id] : undefined);
+        const columns = actionContext.columns;
+        const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
+        const project = await projectService.getProject();
+        if(project) {
+            const locationService = await SDK.getService<ILocationService>(CommonServiceIds.LocationService);
+            const collectionUri = await locationService.getServiceLocation();
+            const url = generateUrl(SupportedActions.OpenItems, collectionUri, encodeURI(project.name), undefined, wids, columns);
+            openUrl(url);
+        }
+        else{
+            alert("Unable to perform operation. Not a valid project context.");
+        }
     }
 };
 
