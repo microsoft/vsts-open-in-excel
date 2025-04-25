@@ -29,21 +29,6 @@ export function isSupportedQueryId(queryId: string) {
     return queryId && queryExclusionList.indexOf(queryId.toUpperCase()) === -1;
 }
 
-// export function generateUrl(action: string, collection: string, project: string, qid?: string | undefined, wids?: number[] | undefined, columns?: string[] | undefined): string {
-//     let url = `tfs://ExcelRequirements/${action}?cn=${collection}&proj=${project}`;
-
-//     if (!qid) {
-//         throw new Error(`'qid' must be provided for '${SupportedActions.OpenQuery}' action.`);
-//     }
-//     url += `&qid=${qid}`;
-
-//     if (url.length > 2000) {
-//         throw new Error('Generated url is exceeds the maxlength, please reduce the number of work items you selected.');
-//     }
-
-//     return url;
-// }
-
 export function generateUrl(action: string, collection: string, project: string, qid?: string, wids?: number[], columns?: string[]): string {
     let url = `tfs://ExcelRequirements/${action}?cn=${collection}&proj=${project}`;
 
