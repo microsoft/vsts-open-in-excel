@@ -91,7 +91,7 @@ export var openQueryAction = {
                 openUrl(url);
             }
             else{
-                alert("Unable to perform operation. Not a valid team context.");
+                alert("Unable to perform operation. Not a valid project context.");
             }
         }
         else {
@@ -113,11 +113,11 @@ export var openQueryOnToolbarAction = {
                     openUrl(url);
                 }
                 else{
-                    alert("Unable to perform operation. Not a valid context.");
+                    alert("Unable to perform operation. Not a valid project context.");
                 }
             }
             else {
-                alert("Unable to perform operation. Not a valid context.");
+                alert("Unable to perform operation. To use this extension, queries must be saved in My Queries or Shared Queries.");
             }
     }
 };
@@ -138,7 +138,7 @@ export var openWorkItemsAction = {
             openUrl(url);
         }
         else{
-            alert("Unable to perform operation. Not a valid team context.");
+            alert("Unable to perform operation. Not a valid project context.");
         }
     }
 };
