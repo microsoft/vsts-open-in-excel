@@ -54,6 +54,7 @@ stages:
       marketplaceConnectedServiceName: $(marketplaceServiceConnection)
       publisherId: $(publisherId)
       publicExtensionName: $(publicExtensionName)
+      updateTaskVersion: true
 
 - stage: 'DeployTest'
   displayName: 'Deploy to Test'
@@ -67,6 +68,7 @@ stages:
       marketplaceConnectedServiceName: $(marketplaceServiceConnection)
       publisherId: $(publisherId)
       publicExtensionName: $(publicExtensionName)
+      updateTaskVersion: true
 
 - stage: 'DeployRelease'
   displayName: 'Deploy Release'
@@ -81,3 +83,4 @@ stages:
       publisherId: $(publisherId)
       publicExtensionName: $(publicExtensionName)
       extensionVisibility: 'public'
+      updateTaskVersion: true
