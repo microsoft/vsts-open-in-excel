@@ -17,22 +17,22 @@
     "license": "ISC",
     "description": "",
     "dependencies": {
-        "@types/react": "^16.14.0",
-        "@types/react-dom": "^16.9.0",
-        "azure-devops-extension-api": "^4.254.0",
+        "@types/react": "^16.14.65",
+        "@types/react-dom": "^16.9.25",
+        "azure-devops-extension-api": "^4.258.0",
         "azure-devops-extension-sdk": "^4.0.2",
-        "azure-devops-ui": "^2.256.0",
+        "azure-devops-ui": "^2.259.0",
         "react": "^16.14.0",
         "react-dom": "^16.14.0",
         "rimraf": "^6.0.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.27.4",
-        "@babel/preset-env": "^7.27.2",
+        "@babel/core": "^7.28.0",
+        "@babel/preset-env": "^7.28.0",
         "@babel/preset-react": "^7.27.1",
         "@babel/preset-typescript": "^7.27.1",
-        "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",
-        "@types/react-dom": "^16.9.0",
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
+        "@types/react-dom": "^16.9.25",
         "babel-loader": "^10.0.0",
         "copy-webpack-plugin": "^13.0.0",
         "css-loader": "^7.1.2",
@@ -42,9 +42,9 @@
         "rimraf": "^6.0.1",
         "style-loader": "^4.0.0",
         "ts-loader": "^9.5.2",
-        "typescript": "^5.8.3",
-        "webpack": "^5.99.9",
+        "typescript": "^5.9.2",
+        "webpack": "^5.101.0",
         "webpack-cli": "^6.0.1",
-        "webpack-dev-server": "^5.2.1"
+        "webpack-dev-server": "^5.2.2"
     }
 }
